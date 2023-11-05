@@ -17,9 +17,9 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('gyydin')
+require('john')
 
-local plugs = require("gyydin.plugins")
+local plugs = require("john.plugins")
 
 
 require("lazy").setup(plugs)
