@@ -1,27 +1,43 @@
-
 local plugins = {
-	{'williamboman/mason.nvim'},
-	{'williamboman/mason-lspconfig.nvim'},
 	-- LSP Support
+	-- {'williamboman/mason.nvim'},
+	-- {'williamboman/mason-lspconfig.nvim'},
+	-- {
+	-- 	'neovim/nvim-lspconfig',
+	-- 	dependencies = {
+	-- 		{'hrsh7th/cmp-nvim-lsp'},
+	-- 	}
+	-- },
+	-- Autocompletion
+	-- {
+	-- 	'hrsh7th/nvim-cmp',
+	-- 	dependencies = {
+	-- 		{'L3MON4D3/LuaSnip'}
+	-- 	},
+	-- },
 	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
-		lazy = true,
-		config = false,
 	},
 	{
-		'neovim/nvim-lspconfig',
-		dependencies = {
-			{'hrsh7th/cmp-nvim-lsp'},
-		}
+		'williamboman/mason.nvim',
 	},
 	-- Autocompletion
 	{
 		'hrsh7th/nvim-cmp',
 		dependencies = {
-			{'L3MON4D3/LuaSnip'}
+			{ 'L3MON4D3/LuaSnip' },
 		},
 	},
+	-- LSP
+	{
+		'neovim/nvim-lspconfig',
+		dependencies = {
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'williamboman/mason-lspconfig.nvim' },
+		},
+	},
+
 	-- telescope
 	{
 		"nvim-telescope/telescope.nvim",
@@ -34,17 +50,17 @@ local plugins = {
 	{
 		"marko-cerovac/material.nvim"
 	},
+	-- treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 
 	},
+	-- harpoon
 	{
 		"ThePrimeagen/harpoon",
 	},
-	{
-		"mbbill/undotree",
-	},
+	-- lazygit
 	{
 		'kdheepak/lazygit.nvim',
 		dependencies = {
@@ -52,5 +68,4 @@ local plugins = {
 		}
 	}
 }
-
 return plugins

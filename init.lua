@@ -24,4 +24,4 @@ local plugs = require("john.plugins")
 
 require("lazy").setup(plugs)
 
-SetColor("material", "darker")
+SetColor("material", "deep ocean")

@@ -7,3 +7,6 @@ vim.keymap.set('n', '<leader>fs', function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end)
 
+-- git
+vim.keymap.set("n", "<leader>gb", builtin.git_branches, {})
+

@@ -1,5 +1,4 @@
---print('Hi')
+require("john.set")
 require("john.remap")
 
-vim.opt.termguicolors = true
 
