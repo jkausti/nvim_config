@@ -72,6 +72,14 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         }
-    }
+    },
+    {
+        'nvimdev/dashboard-nvim',
+        event = 'VimEnter',
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+    },
+    {
+        'm4xshen/autoclose.nvim'
+    },
 }
 return plugins

@@ -12,6 +12,3 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- best remap ever
 vim.keymap.set("x", "<leader>p", "\"_dP")
-
-
-
