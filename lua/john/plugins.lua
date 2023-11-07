@@ -81,5 +81,9 @@ local plugins = {
     {
         'm4xshen/autoclose.nvim'
     },
+    {
+        "numToStr/comment.nvim",
+        lazy = false
+    }
 }
 return plugins
