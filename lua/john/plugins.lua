@@ -84,6 +84,9 @@ local plugins = {
     {
         "numToStr/comment.nvim",
         lazy = false
+    },
+    {
+        'voldikss/vim-floaterm'
     }
 }
 return plugins
