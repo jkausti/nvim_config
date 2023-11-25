@@ -15,3 +15,8 @@ vim.keymap.set("x", "<leader>p", "\"_dP")
 
 -- goto end of line
 vim.keymap.set("n", "§", "$")
+
+
+-- jump between windows
+vim.keymap.set("n", "<leader>l", "<C-w>l")
+vim.keymap.set("n", "<leader>h", "<C-w>h")
