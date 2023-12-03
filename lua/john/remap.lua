@@ -13,6 +13,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- best remap ever
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
+-- yanking stuff
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
+vim.keymap.set("n", "<leader>Y", [["+Y]])
+
 -- goto end of line
 vim.keymap.set("n", "§", "$")
 
