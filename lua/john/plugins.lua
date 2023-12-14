@@ -130,6 +130,19 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
+    },
+    {
+        "iamcco/markdown-preview.nvim",
+        cmd = { "MarkdownPreviewToggel", "MarkdownPreview", "MarkdownPreviewStop" },
+        ft = { "markdown" },
+        build = function() vim.fin["mkdp#util#install"]() end,
+    },
+    {
+        "ziontee113/icon-picker.nvim",
+        dependencies = {
+            "stevearc/dressing.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
     }
 }
 return plugins
