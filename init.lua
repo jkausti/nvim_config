@@ -1,7 +1,10 @@
+require("core")
+
+
+-- Auto-install lazy.nvim if not present
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 local uv = vim.uv or vim.loop
 
--- Auto-install lazy.nvim if not present
 if not uv.fs_stat(lazypath) then
   print('Installing lazy.nvim....')
   vim.fn.system({
@@ -17,10 +20,8 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
-require('john')
+-- install plugins
+require("plugins")
 
-local plugs = require("john.plugins")
-
-require("lazy").setup(plugs)
-
+-- set color theme
 SetColor("material", "deep ocean")

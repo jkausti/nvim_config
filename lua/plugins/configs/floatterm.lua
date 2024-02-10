@@ -1,3 +1,5 @@
+require("floaterm").setup()
+
 -- show floaterm
 vim.keymap.set("n", "<A-t>", ":FloatermToggle<CR>")
 

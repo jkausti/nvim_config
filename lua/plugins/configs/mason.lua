@@ -7,3 +7,9 @@
 --         lsp_zero.default_setup,
 --     },
 -- })
+-- require('mason').setup({})
+
+local options = {
+    ensure_installed = { 'black', 'ruff', 'lua-language-server', 'pyright' }
+}
+return options

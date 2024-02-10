@@ -1,64 +1,82 @@
 local plugins = {
-    -- LSP Support
-    -- {'williamboman/mason.nvim'},
-    -- {'williamboman/mason-lspconfig.nvim'},
     -- {
-    -- 	'neovim/nvim-lspconfig',
-    -- 	dependencies = {
-    -- 		{'hrsh7th/cmp-nvim-lsp'},
-    -- 	}
+    --     'williamboman/mason.nvim',
     -- },
-    -- Autocompletion
-    -- {
-    -- 	'hrsh7th/nvim-cmp',
-    -- 	dependencies = {
-    -- 		{'L3MON4D3/LuaSnip'}
-    -- 	},
-    -- },
-    -- {
-    --     'VonHeikemen/lsp-zero.nvim',
-    --     branch = 'v3.x',
-    -- },
-    {
-        'williamboman/mason.nvim',
-    },
     -- Autocompletion
     {
         'hrsh7th/nvim-cmp',
         dependencies = {
-            { 'L3MON4D3/LuaSnip' },
+            { 'hrsh7th/cmp-buffer' },
+            { 'hrsh7th/cmp-path' },
+            { 'hrsh7th/cmp-nvim-lua' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'hrsh7th/cmp-nvim-lsp-signature-help'},
+            { 'hrsh7th/cmp-vsnip'},
+            { 'hrsh7th/vim-vsnip' },
         },
+        opts = function()
+            return require "plugins.configs.nvim-cmp"
+        end,
+        config = function(_, opts)
+            require("cmp").setup(opts)
+        end
     },
     -- LSP
     {
-        'neovim/nvim-lspconfig',
+        "williamboman/mason.nvim",
+        cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
+        opts = function()
+          return require "plugins.configs.mason"
+        end,
+        config = function(_, opts)
+          require("mason").setup(opts)
+
+          -- custom nvchad cmd to install all mason binaries listed
+          vim.api.nvim_create_user_command("MasonInstallAll", function()
+            if opts.ensure_installed and #opts.ensure_installed > 0 then
+              vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+            end
+          end, {})
+
+          vim.g.mason_binaries_list = opts.ensure_installed
+        end,
+    },
+    {
+        "neovim/nvim-lspconfig",
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'williamboman/mason-lspconfig.nvim' },
+            { 'williamboman/mason-lspconfig'},
         },
+        -- event = "User FilePost",
+        config = function()
+          require "plugins.configs.lsp"
+        end,
     },
-
     -- telescope
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.4",
         dependencies = {
             "nvim-lua/plenary.nvim"
-        }
+        },
+        config = function ()
+            require("plugins.configs.telescope")
+        end
     },
     -- material theme
     {
-        "marko-cerovac/material.nvim"
+        "marko-cerovac/material.nvim",
+        config = function()
+            return require("plugins.configs.colors")
+        end
     },
     -- treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-
-    },
-    -- harpoon
-    {
-        "ThePrimeagen/harpoon",
+        config = function ()
+            require("plugins.configs.treesitter")
+        end
     },
     -- lazygit
     {
@@ -71,15 +89,24 @@ local plugins = {
         'nvim-lualine/lualine.nvim',
         dependencies = {
             "nvim-tree/nvim-web-devicons"
-        }
+        },
+        config = function ()
+            require("plugins.configs.lualine")
+        end
     },
     {
         'nvimdev/dashboard-nvim',
         event = 'VimEnter',
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } }
+        dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+        config = function ()
+            require("plugins.configs.dashboard")
+        end
     },
     {
-        'm4xshen/autoclose.nvim'
+        'm4xshen/autoclose.nvim',
+        config = function()
+            return require("plugins.configs.autoclose")
+        end
     },
     {
         "numToStr/comment.nvim",
@@ -130,6 +157,9 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
+        config = function ()
+            require("plugins.configs.tree")
+        end
     },
     {
         "iamcco/markdown-preview.nvim",
@@ -149,8 +179,5 @@ local plugins = {
         version = '^4', -- Recommended
         ft = { 'rust' },
     },
-    {
-        'hrsh7th/cmp-buffer'
-    }
 }
-return plugins
+require('lazy').setup(plugins)
