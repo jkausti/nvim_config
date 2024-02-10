@@ -18,12 +18,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('john')
-require('lsp')
 
 local plugs = require("john.plugins")
-
 
 require("lazy").setup(plugs)
 
 SetColor("material", "deep ocean")
-

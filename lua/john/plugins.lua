@@ -144,10 +144,13 @@ local plugins = {
             "nvim-telescope/telescope.nvim"
         }
     },
-    -- {
-    --     'mrcjkb/rustaceanvim',
-    --     version = '^4', -- Recommended
-    --     ft = { 'rust' },
-    -- }
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^4', -- Recommended
+        ft = { 'rust' },
+    },
+    {
+        'hrsh7th/cmp-buffer'
+    }
 }
 return plugins
