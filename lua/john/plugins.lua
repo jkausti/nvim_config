@@ -15,10 +15,10 @@ local plugins = {
     -- 		{'L3MON4D3/LuaSnip'}
     -- 	},
     -- },
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-    },
+    -- {
+    --     'VonHeikemen/lsp-zero.nvim',
+    --     branch = 'v3.x',
+    -- },
     {
         'williamboman/mason.nvim',
     },
@@ -143,6 +143,11 @@ local plugins = {
             "stevearc/dressing.nvim",
             "nvim-telescope/telescope.nvim"
         }
-    }
+    },
+    -- {
+    --     'mrcjkb/rustaceanvim',
+    --     version = '^4', -- Recommended
+    --     ft = { 'rust' },
+    -- }
 }
 return plugins
