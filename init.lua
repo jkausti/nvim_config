@@ -18,6 +18,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require('john')
+require('lsp')
 
 local plugs = require("john.plugins")
 
