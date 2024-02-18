@@ -20,7 +20,34 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 -- goto end of line
 vim.keymap.set("n", "§", "$")
 
-
 -- jump between windows
 vim.keymap.set("n", "<leader>l", "<C-w>l")
 vim.keymap.set("n", "<leader>h", "<C-w>h")
+
+vim.keymap.set('n', '<A-.>', '<Cmd>BufferNext<CR>')
+vim.keymap.set('n', '<A-,>', '<Cmd>BufferPrevious<CR>')
+
+-- close buffer
+vim.keymap.set('n', '<leader>c', '<Cmd>BufferClose<CR>')
+
+-- show floaterm
+vim.keymap.set("n", "<A-t>", ":FloatermToggle<CR>")
+
+-- exit terminal mode
+vim.keymap.set("t", "<A-e>", "<C-\\><C-n>")
+
+-- new floaterm
+vim.keymap.set("n", "<leader>tj", ":FloatermNew<CR>")
+
+-- terminal next and previous
+vim.keymap.set("n", "<leader>tn", ":FloatermNext<CR>")
+vim.keymap.set("n", "<leader>tp", ":FloatermPrev<CR>")
+
+-- hide floaterm
+vim.keymap.set("n", "<leader>e", ":FloatermHide<CR>")
+
+-- kill floaterm
+vim.keymap.set("n", "<leader>tk", ":FloatermKill<CR>")
+
+-- Neogen docstring generation
+vim.keymap.set("n", "<Leader>nf", ":DogeGenerate numpy<CR>", opts)

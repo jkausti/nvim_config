@@ -10,8 +10,8 @@ local plugins = {
             { 'hrsh7th/cmp-path' },
             { 'hrsh7th/cmp-nvim-lua' },
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lsp-signature-help'},
-            { 'hrsh7th/cmp-vsnip'},
+            { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+            { 'hrsh7th/cmp-vsnip' },
             { 'hrsh7th/vim-vsnip' },
         },
         opts = function()
@@ -26,30 +26,30 @@ local plugins = {
         "williamboman/mason.nvim",
         cmd = { "Mason", "MasonInstall", "MasonInstallAll", "MasonUpdate" },
         opts = function()
-          return require "plugins.configs.mason"
+            return require "plugins.configs.mason"
         end,
         config = function(_, opts)
-          require("mason").setup(opts)
+            require("mason").setup(opts)
 
-          -- custom nvchad cmd to install all mason binaries listed
-          vim.api.nvim_create_user_command("MasonInstallAll", function()
-            if opts.ensure_installed and #opts.ensure_installed > 0 then
-              vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
-            end
-          end, {})
+            -- custom nvchad cmd to install all mason binaries listed
+            vim.api.nvim_create_user_command("MasonInstallAll", function()
+                if opts.ensure_installed and #opts.ensure_installed > 0 then
+                    vim.cmd("MasonInstall " .. table.concat(opts.ensure_installed, " "))
+                end
+            end, {})
 
-          vim.g.mason_binaries_list = opts.ensure_installed
+            vim.g.mason_binaries_list = opts.ensure_installed
         end,
     },
     {
         "neovim/nvim-lspconfig",
         dependencies = {
             { 'hrsh7th/cmp-nvim-lsp' },
-            { 'williamboman/mason-lspconfig'},
+            { 'williamboman/mason-lspconfig' },
         },
         -- event = "User FilePost",
         config = function()
-          require "plugins.configs.lsp"
+            require "plugins.configs.lsp"
         end,
     },
     -- telescope
@@ -59,22 +59,33 @@ local plugins = {
         dependencies = {
             "nvim-lua/plenary.nvim"
         },
-        config = function ()
+        config = function()
             require("plugins.configs.telescope")
         end
     },
-    -- material theme
+    -- colorthemes
     {
         "marko-cerovac/material.nvim",
         config = function()
             return require("plugins.configs.colors")
         end
     },
+    {
+        "rose-pine/neovim",
+        as = "rose-pine"
+    },
+    {
+        "ellisonleao/gruvbox.nvim",
+        priority = 1000,
+        config = function()
+            return require("gruvbox")
+        end
+    },
     -- treesitter
     {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
-        config = function ()
+        config = function()
             require("plugins.configs.treesitter")
         end
     },
@@ -90,7 +101,7 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
-        config = function ()
+        config = function()
             require("plugins.configs.lualine")
         end
     },
@@ -98,7 +109,7 @@ local plugins = {
         'nvimdev/dashboard-nvim',
         event = 'VimEnter',
         dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-        config = function ()
+        config = function()
             require("plugins.configs.dashboard")
         end
     },
@@ -110,10 +121,16 @@ local plugins = {
     },
     {
         "numToStr/comment.nvim",
-        lazy = false
+        lazy = false,
+        config = function()
+            return require("plugins.configs.comment")
+        end
     },
     {
-        'voldikss/vim-floaterm'
+        'voldikss/vim-floaterm',
+        -- config = function()
+        --    return require('floaterm').setup({})
+        -- end
     },
     {
         'romgrk/barbar.nvim',
@@ -157,7 +174,7 @@ local plugins = {
         dependencies = {
             "nvim-tree/nvim-web-devicons"
         },
-        config = function ()
+        config = function()
             require("plugins.configs.tree")
         end
     },
@@ -172,12 +189,29 @@ local plugins = {
         dependencies = {
             "stevearc/dressing.nvim",
             "nvim-telescope/telescope.nvim"
-        }
+        },
+        config = function()
+            return require("plugins.configs.icon-picker")
+        end
     },
     {
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
         ft = { 'rust' },
+        config = function()
+            return require("plugins.configs.rustaceanvim")
+        end
     },
+    -- {
+    --     "danymat/neogen",
+    --     dependencies = "nvim-treesitter/nvim-treesitter",
+    --     config = true,
+    -- }
+    {
+        "kkoomen/vim-doge",
+        config = function()
+            return require("plugins.configs.doge")
+        end
+    }
 }
 require('lazy').setup(plugins)

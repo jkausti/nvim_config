@@ -23,8 +23,8 @@ M.on_attach = function(client, bufnr)
     vim.keymap.set("n", "<S-l>", function() vim.diagnostic.goto_next() end, opts)
     vim.keymap.set("n", "<S-h>", function() vim.diagnostic.goto_prev() end, opts)
     vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-    vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-    vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+    vim.keymap.set("n", "<leader>rr", function() vim.lsp.buf.references() end, opts)
+    vim.keymap.set("n", "<leader>rn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<c-h>", function() vim.lsp.buf.signature_help() end, opts)
 end
 
@@ -54,14 +54,14 @@ require("mason-lspconfig").setup()
 -- rust
 --
 require("mason-lspconfig").setup_handlers {
-    function (server_name)
+    function(server_name)
         require("lspconfig")[server_name].setup {
             on_attach = M.on_attach,
             capabilities = M.capabilities
         }
     end,
 
-    ['rust_analyzer'] = function () end
+    ['rust_analyzer'] = function() end
 }
 -- require("lspconfig").rust_analyzer.setup({
 --     capabilities = M.capabilities,
