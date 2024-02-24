@@ -94,7 +94,10 @@ local plugins = {
         'kdheepak/lazygit.nvim',
         dependencies = {
             "nvim-lua/plenary.nvim"
-        }
+        },
+        config = function()
+            return require("plugins.configs.lazygit")
+        end
     },
     {
         'nvim-lualine/lualine.nvim',
@@ -148,6 +151,9 @@ local plugins = {
     },
     {
         'nvimtools/none-ls.nvim',
+        config = function()
+            return require("plugins.configs.null-ls")
+        end
         -- opts = {
         --     on_attach = function(client, bufnr)
         --         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
@@ -212,6 +218,6 @@ local plugins = {
         config = function()
             return require("plugins.configs.doge")
         end
-    }
+    },
 }
 require('lazy').setup(plugins)
