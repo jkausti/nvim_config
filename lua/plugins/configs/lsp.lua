@@ -60,29 +60,28 @@ require("mason-lspconfig").setup_handlers {
             capabilities = M.capabilities
         }
     end,
-    ['pyright'] = function () end,
     ['rust_analyzer'] = function() end
 }
 
-require("lspconfig").pyright.setup({
-    capabilities = function ()
-        local capabilities = M.capabilities
-        capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
-        return capabilities
-    end,
-    settings = {
-        python = {
-            analysis = {
-                useLibraryCodeForTypes = true,
-                diagnosticSeverityOverrides = {
-                    reportUnusedVariable = "warning", -- or anything
-                },
-                typeCheckingMode = "basic",
-            },
-        },
-    },
-    on_attach = M.on_attach
-})
+-- require("lspconfig").pyright.setup({
+--     capabilities = function ()
+--         local capabilities = M.capabilities
+--         capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+--         return capabilities
+--     end,
+--     settings = {
+--         python = {
+--             analysis = {
+--                 useLibraryCodeForTypes = true,
+--                 diagnosticSeverityOverrides = {
+--                     reportUnusedVariable = "warning", -- or anything
+--                 },
+--                 typeCheckingMode = "basic",
+--             },
+--         },
+--     },
+--     on_attach = M.on_attach
+-- })
 -- require("lspconfig").rust_analyzer.setup({
 --     capabilities = M.capabilities,
 --     on_attach = M.on_attach,
