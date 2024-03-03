@@ -10,6 +10,15 @@
 -- require('mason').setup({})
 
 local options = {
-    ensure_installed = { 'black', 'ruff', 'lua-language-server', 'pyright' }
+    ensure_installed = {
+        'black',
+        'ruff',
+        'lua-language-server',
+        'pyright',
+        'typescript-language-server',
+        'tailwindcss-language-server',
+        'prettierd',
+        'eslint-lsp'
+    }
 }
 return options

@@ -153,7 +153,8 @@ local plugins = {
         'nvimtools/none-ls.nvim',
         config = function()
             return require("plugins.configs.null-ls")
-        end
+        end,
+        event = "VeryLazy"
         -- opts = {
         --     on_attach = function(client, bufnr)
         --         local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
