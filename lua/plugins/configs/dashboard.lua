@@ -28,6 +28,7 @@ require("dashboard").setup({
                 key = 'u'
             }
         },
-        disable_move = true
+        disable_move = true,
+        project = { enable = false }
     }
 })
