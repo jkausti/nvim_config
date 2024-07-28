@@ -207,7 +207,8 @@ local plugins = {
         ft = { 'rust' },
         config = function()
             return require("plugins.configs.rustaceanvim")
-        end
+        end,
+        lazy = false,
     },
     -- {
     --     "danymat/neogen",
