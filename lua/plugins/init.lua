@@ -221,5 +221,11 @@ local plugins = {
             return require("plugins.configs.doge")
         end
     },
+    {
+        "DaikyXendo/nvim-material-icon",
+        config = function()
+            return require("plugins.configs.nvim_material_icons")
+        end
+    }
 }
 require('lazy').setup(plugins)
