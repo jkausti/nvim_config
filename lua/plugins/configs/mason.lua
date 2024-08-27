@@ -12,9 +12,9 @@
 local options = {
     ensure_installed = {
         'black',
-        'ruff',
+        -- 'ruff',
         'lua-language-server',
-        'pyright',
+        -- 'pyright',
         'typescript-language-server',
         'tailwindcss-language-server',
         'prettierd',
