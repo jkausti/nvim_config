@@ -226,6 +226,19 @@ local plugins = {
         config = function()
             return require("plugins.configs.nvim_material_icons")
         end
+    },
+    {
+        "mfussenegger/nvim-dap",
+    },
+    {
+        "mfussenegger/nvim-dap-python",
+        ft = "python",
+        dependencies = {
+            "mfussenegger/nvim-dap",
+        },
+        config = function()
+            return require("plugins.configs.nvim-dap-python")
+        end
     }
 }
 require('lazy').setup(plugins)
