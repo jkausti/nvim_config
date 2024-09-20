@@ -12,6 +12,7 @@ require 'nvim-treesitter.configs'.setup {
         "typescript",
         "css",
         "toml",
+        "c3"
     },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
@@ -53,3 +54,20 @@ require 'nvim-treesitter.configs'.setup {
 }
 
 vim.treesitter.language.register('css', 'tcss')
+
+vim.filetype.add({
+    extension = {
+        c3 = "c3",
+        c3i = "c3i",
+        c3t = "c3t"
+    },
+})
+
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.c3 = {
+    install_info = {
+        url = "https://github.com/c3lang/tree-sitter-c3",
+        files = { "src/parser.c", "src/scanner.c" },
+        branch = "main",
+    },
+}
