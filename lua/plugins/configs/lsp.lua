@@ -31,23 +31,29 @@ end
 
 M.capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- M.capabilities.textDocument.completion.completionItem = {
---     documentationFormat = { "markdown", "plaintext" },
---     snippetSupport = true,
---     preselectSupport = true,
---     insertReplaceSupport = true,
---     labelDetailsSupport = true,
---     deprecatedSupport = true,
---     commitCharactersSupport = true,
---     tagSupport = { valueSet = { 1 } },
---     resolveSupport = {
---         properties = {
---             "documentation",
---             "detail",
---             "additionalTextEdits",
---         },
---     },
--- }
+
+-- c3
+local lspconfig = require("lspconfig")
+local util = require("lspconfig.util")
+local configs = require("lspconfig.configs")
+if not configs.c3_lsp then
+    configs.c3_lsp = {
+        default_config = {
+            cmd = { "c3lsp" },
+            filetypes = { "c3", "c3i" },
+            root_dir = util.root_pattern('.git'),
+            settings = {},
+            name = "c3_lsp",
+            capabilities = M.capabilities,
+            on_attach = M.on_attach,
+        }
+    }
+end
+lspconfig.c3_lsp.setup {}
+
+
+
+
 
 
 require("mason-lspconfig").setup()
@@ -61,7 +67,18 @@ require("mason-lspconfig").setup_handlers {
             capabilities = M.capabilities
         }
     end,
-    ['rust_analyzer'] = function() end
+    ['rust_analyzer'] = function() end,
+    -- ['c3_lsp'] = function()
+    --     require("lspconfig").c3_lsp.setup {
+    --         cmd = { "/home/john/.local/bin/c3lsp" },
+    --         filetypes = { "c3", "c3i" },
+    --         root_dir = require("nvim_lsp").util.root_pattern('.git'),
+    --         settings = {},
+    --         name = "c3_lsp",
+    --         on_attach = M.on_attach,
+    --         capabilities = M.capabilities
+    --     }
+    -- end
 }
 
 -- require("lspconfig").pyright.setup({
