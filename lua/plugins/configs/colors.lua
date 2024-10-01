@@ -9,4 +9,4 @@ function SetColor(color, style)
     vim.cmd.colorscheme(color)
 end
 
-SetColor()
+SetColor("gruvbox")
