@@ -24,4 +24,4 @@ vim.opt.rtp:prepend(lazypath)
 require("plugins")
 
 -- set color theme
--- SetColor("gruvbox")
+SetColor("gruvbox")

@@ -41,3 +41,23 @@ vim.opt.colorcolumn = "80"
 vim.opt.clipboard = "unnamedplus"
 
 vim.g.mapleader = " "
+
+-- vim.cmd("let g:python_indent = {}")
+-- vim.g.python_indent = {}
+
+local indent_setup = "let g:python_indent = {" ..
+"'disable_parentheses_indenting': v:false, " ..
+"'closed_paren_align_last_line': v:false, " ..
+"'searchpair_timeout': 150, " ..
+"'continue': 'shiftwidth()', " ..
+"'open_paren': 'shiftwidth()', " ..
+"'nested_paren': 'shiftwidth()' " ..
+"}"
+
+vim.cmd(indent_setup)
+-- vim.g.python_indent.disable_parenthesis_indenting = false
+-- vim.g.python_indent.closed_paren_align_last_line = false
+-- vim.g.python_indent.searchpair_timeout = 150
+-- vim.g.python_indent.continue = "shiftwidth()"
+-- vim.g.python_indent.open_paren = "shiftwidth()"
+-- vim.g.python_indent.nested_paren = "shiftwidth()"

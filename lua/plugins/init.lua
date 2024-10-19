@@ -78,7 +78,7 @@ local plugins = {
         "ellisonleao/gruvbox.nvim",
         priority = 1000,
         config = function()
-            return require("gruvbox")
+            return require("plugins.configs.gruvbox")
         end
     },
     -- treesitter
@@ -108,14 +108,14 @@ local plugins = {
             require("plugins.configs.lualine")
         end
     },
-    {
-        'nvimdev/dashboard-nvim',
-        event = 'VimEnter',
-        dependencies = { { 'nvim-tree/nvim-web-devicons' } },
-        config = function()
-            require("plugins.configs.dashboard")
-        end
-    },
+    -- {
+    --     'nvim/ev/dashboard-nvim',
+    --     event = 'VimEnter',
+    --     dependencies = { { 'nvim-tree/nvim-web-devicons' } },
+    --     config = function()
+    --         require("plugins.configs.dashboard")
+    --     end
+    -- },
     {
         'm4xshen/autoclose.nvim',
         config = function()
@@ -221,12 +221,12 @@ local plugins = {
             return require("plugins.configs.doge")
         end
     },
-    {
-        "DaikyXendo/nvim-material-icon",
-        config = function()
-            return require("plugins.configs.nvim_material_icons")
-        end
-    },
+    -- {
+    --     "DaikyXendo/nvim-material-icon",
+    --     config = function()
+    --         return require("plugins.configs.nvim_material_icons")
+    --     end
+    -- },
     {
         "mfussenegger/nvim-dap",
     },
@@ -239,6 +239,22 @@ local plugins = {
         config = function()
             return require("plugins.configs.nvim-dap-python")
         end
+    },
+    {
+        "kawre/leetcode.nvim",
+        build = ":TSUpdate html",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim", -- required by telescope
+            "MunifTanjim/nui.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {
+            -- configuration goes here
+            lang = "rust"
+        },
+
     }
 }
 require('lazy').setup(plugins)
