@@ -81,6 +81,9 @@ local plugins = {
             return require("plugins.configs.gruvbox")
         end
     },
+    {
+        "blazkowolf/gruber-darker.nvim"
+    },
     -- treesitter
     {
         "nvim-treesitter/nvim-treesitter",
