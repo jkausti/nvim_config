@@ -15,10 +15,7 @@ local options = {
         -- 'ruff',
         'lua-language-server',
         -- 'pyright',
-        'typescript-language-server',
-        'tailwindcss-language-server',
         'prettierd',
-        'eslint-lsp'
     }
 }
 return options

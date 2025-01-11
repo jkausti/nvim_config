@@ -51,8 +51,15 @@ if not configs.c3_lsp then
 end
 lspconfig.c3_lsp.setup {}
 
-
-
+-- zig
+lspconfig.zls.setup {
+    cmd = { "zls" },
+    settings = {
+        zls = {
+            zig_exe_path = "~/.local/bin/zig"
+        }
+    }
+}
 
 
 
@@ -79,6 +86,19 @@ require("mason-lspconfig").setup_handlers {
     --         capabilities = M.capabilities
     --     }
     -- end
+    ['basedpyright'] = function()
+        require("lspconfig").basedpyright.setup {
+            on_attach = M.on_attach,
+            capabilities = M.capabilities,
+            settings = {
+                basedpyright = {
+                    analysis = {
+                        typeCheckingMode = "basic"
+                    }
+                }
+            }
+        }
+    end,
 }
 
 -- require("lspconfig").pyright.setup({
