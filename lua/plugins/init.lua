@@ -258,6 +258,9 @@ local plugins = {
             lang = "rust"
         },
 
+    },
+    {
+        "github/copilot.vim"
     }
 }
 require('lazy').setup(plugins)
