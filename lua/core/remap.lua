@@ -55,5 +55,10 @@ vim.keymap.set("n", "<leader>tk", ":FloatermKill<CR>")
 -- Neogen docstring generation
 vim.keymap.set("n", "<Leader>nf", ":DogeGenerate numpy<CR>", opts)
 
+-- copilot
 
--- Enabling inline hints
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("")', {
+    expr = true,
+    replace_keycodes = false
+})
+vim.g.copilot_no_tab_map = true

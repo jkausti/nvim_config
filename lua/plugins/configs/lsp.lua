@@ -58,7 +58,9 @@ lspconfig.zls.setup {
         zls = {
             zig_exe_path = "~/.local/bin/zig"
         }
-    }
+    },
+    on_attach = M.on_attach,
+    capabilities = M.capabilities
 }
 
 
