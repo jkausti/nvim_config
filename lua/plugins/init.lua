@@ -261,6 +261,59 @@ local plugins = {
     },
     {
         "github/copilot.vim"
+    },
+    {
+        "olimorris/codecompanion.nvim",
+        config = true,
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        opts = {
+            adapters = {
+                copilot = function()
+                    return require("codecompanion.adapters").extend("copilot", {
+                        schema = {
+                            model = {
+                                default = "claude-3.7-sonnet"
+                            }
+                        }
+                    })
+                end,
+                ollama = function()
+                    return require("codecompanion.adapters").extend("ollama", {
+                        schema = {
+                            num_ctx = {
+                                default = 20000
+                            }
+                        }
+                    })
+                end
+            },
+            strategies = {
+                chat = {
+                    adapter = "ollama",
+                },
+                inline = {
+                    adapter = "ollama",
+                },
+            }
+        }
+    },
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            "rcarriga/nvim-notify",
+        }
     }
 }
 require('lazy').setup(plugins)
