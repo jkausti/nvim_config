@@ -8,7 +8,6 @@ vim.opt.relativenumber = true
 -- autcompletion settings
 vim.opt.completeopt = { 'menuone', 'noselect', 'noinsert' }
 vim.opt.shortmess = vim.opt.shortmess + { c = true }
-vim.api.nvim_set_option('updatetime', 50)
 
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
@@ -61,3 +60,5 @@ vim.cmd(indent_setup)
 -- vim.g.python_indent.continue = "shiftwidth()"
 -- vim.g.python_indent.open_paren = "shiftwidth()"
 -- vim.g.python_indent.nested_paren = "shiftwidth()"
+
+vim.api.nvim_set_option('updatetime', 50)

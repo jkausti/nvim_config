@@ -218,12 +218,6 @@ local plugins = {
     --     dependencies = "nvim-treesitter/nvim-treesitter",
     --     config = true,
     -- }
-    {
-        "kkoomen/vim-doge",
-        config = function()
-            return require("plugins.configs.doge")
-        end
-    },
     -- {
     --     "DaikyXendo/nvim-material-icon",
     --     config = function()
@@ -260,7 +254,10 @@ local plugins = {
 
     },
     {
-        "github/copilot.vim"
+        "zbirenbaum/copilot.lua",
+        config = function()
+            return require("plugins.configs.copilot_conf")
+        end,
     },
     {
         "olimorris/codecompanion.nvim",
@@ -268,6 +265,9 @@ local plugins = {
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
+            "j-hui/fidget.nvim",
+            -- "ibhagwan/fzf-lua",
+            "echasnovski/mini.diff",
         },
         opts = {
             adapters = {
@@ -292,11 +292,19 @@ local plugins = {
             },
             strategies = {
                 chat = {
-                    adapter = "ollama",
+                    adapter = "copilot",
                 },
                 inline = {
-                    adapter = "ollama",
+                    adapter = "copilot",
                 },
+            },
+            display = {
+                action_palette = {
+                    provider = "default"
+                },
+                diff = {
+                    provider = "mini_diff"
+                }
             }
         }
     },
@@ -312,7 +320,7 @@ local plugins = {
             -- OPTIONAL:
             --   `nvim-notify` is only needed, if you want to use the notification view.
             --   If not available, we use `mini` as the fallback
-            "rcarriga/nvim-notify",
+            -- "rcarriga/nvim-notify",
         }
     }
 }
